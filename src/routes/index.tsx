@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import {
   Github, Linkedin, Mail, ExternalLink, ArrowRight,
   GraduationCap, Briefcase, Code2, Cpu, Eye, Layers,
-  Brain, Hand, Car, Sparkles, MapPin, Send,
+  Brain, Hand, Car, Sparkles, MapPin, Send, CheckCircle2, Loader2, AlertCircle,
 } from "lucide-react";
 import portrait from "@/assets/aprajita-portrait.jpg";
 import { ParticleBackground } from "@/components/ParticleBackground";
@@ -376,26 +377,7 @@ function Portfolio() {
               </div>
             </Reveal>
             <Reveal className="lg:col-span-3" delay={0.1}>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const fd = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent(`Portfolio inquiry from ${fd.get("name")}`);
-                  const body = encodeURIComponent(`${fd.get("message")}\n\n— ${fd.get("name")} (${fd.get("email")})`);
-                  window.location.href = `mailto:aprajitayadav2901@gmail.com?subject=${subject}&body=${body}`;
-                }}
-                className="glass-card rounded-3xl p-8 space-y-4"
-              >
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <input required name="name" placeholder="Your Name" className="w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all" />
-                  <input required type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all" />
-                </div>
-                <input name="subject" placeholder="Subject" className="w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all" />
-                <textarea required name="message" rows={6} placeholder="Tell me about your project..." className="w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all resize-none" />
-                <button type="submit" className="btn-neon w-full justify-center">
-                  Send Message <Send className="w-4 h-4" />
-                </button>
-              </form>
+              <ContactForm />
             </Reveal>
           </div>
         </div>
@@ -427,5 +409,88 @@ function Portfolio() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const inputCls =
+    "w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get("name"),
+      email: fd.get("email"),
+      _subject: fd.get("subject") || `Portfolio inquiry from ${fd.get("name")}`,
+      message: fd.get("message"),
+    };
+
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/aprajitayadav2901@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const data = await res.json();
+      if (data.success === "false" || data.success === false) {
+        throw new Error(data.message || "Submission failed");
+      }
+      setStatus("success");
+      form.reset();
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="glass-card rounded-3xl p-10 h-full flex flex-col items-center justify-center text-center min-h-[400px]">
+        <div className="p-4 rounded-full bg-[var(--neon-blue)]/15 border border-[var(--neon-blue)]/40 glow-blue mb-5">
+          <CheckCircle2 className="w-10 h-10 text-[var(--neon-blue)]" />
+        </div>
+        <h3 className="text-2xl font-bold mb-2">Message sent!</h3>
+        <p className="text-muted-foreground mb-6 max-w-sm">
+          Thanks for reaching out. I'll get back to you at your email shortly.
+        </p>
+        <button onClick={() => setStatus("idle")} className="btn-ghost-neon">
+          Send another <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 space-y-4">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input required name="name" placeholder="Your Name" className={inputCls} />
+        <input required type="email" name="email" placeholder="Email" className={inputCls} />
+      </div>
+      <input name="subject" placeholder="Subject" className={inputCls} />
+      <textarea required name="message" rows={6} placeholder="Tell me about your project..." className={`${inputCls} resize-none`} />
+
+      {status === "error" && (
+        <div className="flex items-start gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+          <span>{errorMsg || "Failed to send. Please try again or email me directly."}</span>
+        </div>
+      )}
+
+      <button type="submit" disabled={status === "loading"} className="btn-neon w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed">
+        {status === "loading" ? (
+          <>Sending… <Loader2 className="w-4 h-4 animate-spin" /></>
+        ) : (
+          <>Send Message <Send className="w-4 h-4" /></>
+        )}
+      </button>
+    </form>
   );
 }
