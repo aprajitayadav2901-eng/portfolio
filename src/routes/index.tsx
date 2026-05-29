@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import {
   Github, Linkedin, Mail, ExternalLink, ArrowRight,
   GraduationCap, Briefcase, Code2, Cpu, Eye, Layers,
-  Brain, Hand, Car, Sparkles, MapPin, Send,
+  Brain, Hand, Car, Sparkles, MapPin, Send, CheckCircle2, Loader2, AlertCircle,
 } from "lucide-react";
 import portrait from "@/assets/aprajita-portrait.jpg";
 import { ParticleBackground } from "@/components/ParticleBackground";
