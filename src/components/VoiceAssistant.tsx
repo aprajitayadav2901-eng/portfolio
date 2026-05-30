@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX, Play, Pause, Sparkles } from "lucide-react";
 
 const SCRIPT = [
-  "Hi there! I'm Aprajita's AI assistant. Welcome to her portfolio.",
-  "Aprajita Yadav is an aspiring AI Engineer and Full Stack Developer passionate about Artificial Intelligence, Machine Learning, and Computer Vision.",
-  "She has completed an AICTE internship in MERN Stack Development, where she built full-stack web applications using MongoDB, Express, React, and Node. She also finished a Yuva Machine Learning internship, working hands-on with Python and real-world ML workflows.",
-  "Her featured projects include a real-time Hand Gesture Recognition system built with Python and OpenCV, and an AI-powered Car Price Prediction model using machine learning regression techniques.",
-  "Her skill set spans C++, Java, Python, and JavaScript, along with React, Node, and the MERN stack, plus strong foundations in data structures, algorithms, and database systems.",
-  "Feel free to explore her projects, experience, and skills. Scroll down to learn more, or head to the contact section to get in touch!",
+  "Hi there! I'm Aprajita. Welcome to my portfolio.",
+  "I'm an aspiring AI Engineer and Full Stack Developer passionate about Artificial Intelligence, Machine Learning, and Computer Vision.",
+  "I've completed an AICTE internship in MERN Stack Development, where I built full-stack web applications using MongoDB, Express, React, and Node. I also finished a Yuva Machine Learning internship, working hands-on with Python and real-world ML workflows.",
+  "My featured projects include a real-time Hand Gesture Recognition system built with Python and OpenCV, and an AI-powered Car Price Prediction model using machine learning regression techniques.",
+  "My skill set spans C++, Java, Python, and JavaScript, along with React, Node, and the MERN stack, plus strong foundations in data structures, algorithms, and database systems.",
 ];
 
 export function VoiceAssistant() {
