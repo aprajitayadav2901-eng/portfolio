@@ -11,6 +11,7 @@ import portrait from "@/assets/aprajita-portrait.jpg";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Navbar } from "@/components/Navbar";
 import { Reveal, SectionTitle } from "@/components/Reveal";
+import { VoiceAssistant } from "@/components/VoiceAssistant";
 
 export const Route = createFileRoute("/")({
   head: () => ({
