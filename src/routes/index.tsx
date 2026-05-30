@@ -85,6 +85,7 @@ function Portfolio() {
       <ParticleBackground />
       <div className="fixed inset-0 -z-20 grid-bg" aria-hidden />
       <Navbar />
+      <VoiceAssistant />
 
       {/* HERO */}
       <section className="relative pt-32 md:pt-40 pb-20 px-6">
