@@ -361,7 +361,7 @@ function Portfolio() {
                   { icon: Mail, label: "aprajitayadav2901@gmail.com", href: "mailto:aprajitayadav2901@gmail.com" },
                   { icon: Linkedin, label: "linkedin.com/in/aprajitay", href: "https://www.linkedin.com/in/aprajitay" },
                   { icon: Github, label: "github.com/aprajitayadav2901-eng", href: "https://github.com/aprajitayadav2901-eng" },
-                  { icon: MapPin, label: "Bhopal, India", href: "#" },
+                  { icon: MapPin, label: "Delhi, India", href: "#" },
                 ].map((c) => (
                   <a
                     key={c.label}
