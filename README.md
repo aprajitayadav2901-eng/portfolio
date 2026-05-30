@@ -18,28 +18,7 @@ Hi, I'm **Aprajita Yadav**, a B.Tech Computer Science Engineering student passio
 
 I enjoy building real-world applications that solve practical problems and continuously learning new technologies.
 
-## 🛠️ Tech Stack
 
-### Frontend
-
-* React.js
-* TypeScript
-* HTML5
-* CSS3
-* Tailwind CSS
-
-### Tools
-
-* Git & GitHub
-* VS Code
-* Lovable AI
-
-### Programming Languages
-
-* Python
-* C++
-* Java
-* JavaScript
 
 ## ✨ Portfolio Features
 
