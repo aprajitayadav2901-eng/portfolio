@@ -73,10 +73,10 @@ const projects = [
 ];
 
 const services = [
-  { icon: Brain, title: "AI Solutions", desc: "Intelligent systems and AI-powered automation tailored to real-world problems." },
-  { icon: Cpu, title: "Machine Learning", desc: "End-to-end ML pipelines — from data to deployable models." },
-  { icon: Eye, title: "Computer Vision", desc: "Object detection, recognition and visual intelligence applications." },
-  { icon: Layers, title: "Full Stack Web", desc: "Modern MERN stack web apps with sleek UI and solid backends." },
+  { icon: Eye, title: "Computer Vision Development", desc: "Creating AI-powered applications using YOLO, OpenCV, and Python for real-time object detection and intelligent automation." },
+  { icon: Code2, title: "Web Application Development", desc: "Building modern, responsive, and interactive web applications with clean UI and optimized performance." },
+  { icon: Brain, title: "Machine Learning Solutions", desc: "Applying machine learning techniques to analyze data, generate insights, and develop predictive systems." },
+  { icon: Cpu, title: "Software Engineering", desc: "Developing efficient and scalable solutions with a focus on clean code, problem-solving, and real-world impact." },
 ];
 
 function Portfolio() {
