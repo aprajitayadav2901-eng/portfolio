@@ -1,323 +1,212 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { TypeAnimation } from "react-type-animation";
 import {
-  Github, Linkedin, Mail, ExternalLink, ArrowRight,
-  GraduationCap, Briefcase, Code2, Cpu, Eye, Layers,
-  Brain, Hand, Car, Sparkles, MapPin, Send, CheckCircle2, Loader2, AlertCircle,
+  Github, Linkedin, Mail, ArrowUpRight,
+  Send, CheckCircle2, Loader2, AlertCircle, MapPin,
 } from "lucide-react";
 import portrait from "@/assets/aprajita-portrait.jpg";
-import { ParticleBackground } from "@/components/ParticleBackground";
 import { Navbar } from "@/components/Navbar";
-import { Reveal, SectionTitle } from "@/components/Reveal";
+import { Reveal } from "@/components/Reveal";
 import { VoiceAssistant } from "@/components/VoiceAssistant";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Aprajita Yadav — AI Engineer & Full Stack Developer" },
-      { name: "description", content: "Portfolio of Aprajita Yadav — AI & ML enthusiast, Computer Vision developer, and Full Stack engineer building intelligent real-world solutions." },
+      { name: "description", content: "Portfolio of Aprajita Yadav — AI, Machine Learning, Computer Vision and Full Stack Developer crafting intelligent systems with precision." },
       { property: "og:title", content: "Aprajita Yadav — AI Engineer & Full Stack Developer" },
-      { property: "og:description", content: "AI, Machine Learning, Computer Vision & MERN Stack portfolio." },
+      { property: "og:description", content: "Editorial portfolio — AI, ML, Computer Vision & Full Stack." },
     ],
   }),
   component: Portfolio,
 });
 
-const skills = {
-  Languages: ["C++", "Java", "Python", "JavaScript"],
-  "AI / ML": ["Artificial Intelligence", "Machine Learning", "Computer Vision", "OpenCV", "YOLO"],
-  "Full Stack": ["React.js", "Node.js", "Express.js", "MongoDB", "MERN Stack"],
-  Foundations: ["DSA", "DBMS", "Git & GitHub"],
-};
-
-const experiences = [
-  {
-    role: "AICTE Internship",
-    org: "MERN Stack Development",
-    icon: Code2,
-    points: [
-      "Built MERN-based assignments using MongoDB, Express, React, Node.",
-      "Developed responsive web interfaces and backend functionalities.",
-      "Performed database integration, debugging and full-stack iterations.",
-    ],
-  },
-  {
-    role: "Yuva ML Internship",
-    org: "Yuva Intern",
-    icon: Brain,
-    points: [
-      "Hands-on practice with Python, ML and Data Analysis.",
-      "Implemented real-world ML concepts and model workflows.",
-      "Strengthened analytical thinking and problem solving.",
-    ],
-  },
+const projects = [
+  { title: "Hand Gesture Recognition", tag: "Computer Vision", year: "2024", desc: "Real-time hand gesture detection using Python and OpenCV with an interactive webcam pipeline." },
+  { title: "Smart Parking Management", tag: "YOLO · CV", year: "2024", desc: "Automated vehicle detection and intelligent slot occupancy tracking built with YOLO and OpenCV." },
+  { title: "MERN Web Suite", tag: "Full Stack", year: "2024", desc: "Responsive MongoDB · Express · React · Node applications with clean architecture and REST APIs." },
+  { title: "ML Insight Engine", tag: "Machine Learning", year: "2024", desc: "Predictive workflows and analytical pipelines built during the Yuva ML internship." },
 ];
 
-const projects = [
-  {
-    title: "Hand Gesture Recognition",
-    desc: "Real-time hand gesture detection system using Python and OpenCV. Interactive webcam-based recognition with computer-vision pipelines.",
-    tags: ["Python", "OpenCV", "Computer Vision"],
-    icon: Hand,
-    accent: "from-[oklch(0.72_0.22_250)] to-[oklch(0.6_0.25_220)]",
-  },
-  {
-    title: "Smart Parking Management",
-    desc: "Smart parking monitoring built with Computer Vision and YOLO. Automated vehicle detection and intelligent slot occupancy tracking.",
-    tags: ["YOLO", "OpenCV", "Python"],
-    icon: Car,
-    accent: "from-[oklch(0.65_0.27_305)] to-[oklch(0.55_0.25_270)]",
-  },
+const achievements = [
+  { kind: "Internship", year: "2024", title: "AICTE — MERN Stack Development", place: "Full Stack Engineering" },
+  { kind: "Internship", year: "2024", title: "Yuva ML Internship", place: "Python · ML · Data Analysis" },
+  { kind: "Education", year: "2023—2027", title: "B.Tech, Computer Science Engineering", place: "VIT Bhopal University" },
 ];
 
 const services = [
-  { icon: Eye, title: "Computer Vision Development", desc: "Creating AI-powered applications using YOLO, OpenCV, and Python for real-time object detection and intelligent automation." },
-  { icon: Code2, title: "Web Application Development", desc: "Building modern, responsive, and interactive web applications with clean UI and optimized performance." },
-  { icon: Brain, title: "Machine Learning Solutions", desc: "Applying machine learning techniques to analyze data, generate insights, and develop predictive systems." },
-  { icon: Cpu, title: "Software Engineering", desc: "Developing efficient and scalable solutions with a focus on clean code, problem-solving, and real-world impact." },
+  { num: "01", title: "Computer Vision", desc: "Real-time detection and intelligent automation with YOLO, OpenCV and Python." },
+  { num: "02", title: "Web Applications", desc: "Modern, responsive interfaces with clean UI and measured performance." },
+  { num: "03", title: "Machine Learning", desc: "Predictive systems and analytical pipelines from raw data to deployable model." },
+  { num: "04", title: "Software Engineering", desc: "Scalable, maintainable code grounded in problem-solving and real-world impact." },
 ];
 
 function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <ParticleBackground />
-      <div className="fixed inset-0 -z-20 grid-bg" aria-hidden />
       <Navbar />
       <VoiceAssistant />
 
       {/* HERO */}
-      <section className="relative pt-32 md:pt-40 pb-20 px-6">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative order-2 lg:order-1"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-blue)]/30 to-[var(--neon-purple)]/30 blur-3xl -z-10" />
-            <div className="relative neon-border rounded-3xl p-2 animate-pulse-glow max-w-md mx-auto">
-              <img
-                src={portrait}
-                alt="Aprajita Yadav, AI Engineer"
-                width={1024}
-                height={1024}
-                className="rounded-2xl w-full h-auto"
-              />
-              <div className="absolute -top-3 -right-3 glass px-3 py-1.5 rounded-full text-xs font-mono text-[var(--neon-blue)] flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
-                Open to Work
-              </div>
-            </div>
-          </motion.div>
+      <section className="relative pt-32 md:pt-40 pb-24 px-6 md:px-10 grain">
+        <div className="absolute inset-0 -z-10 smoke-bg" aria-hidden />
+        <div className="max-w-7xl mx-auto">
+          <div className="eyebrow mb-10">Aprajita Yadav · Portfolio · 2026</div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="order-1 lg:order-2"
-          >
-            <p className="text-muted-foreground mb-3 font-mono text-sm">
-              <span className="text-[var(--neon-blue)]">$</span> Hello, I'm
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4">
-              APRAJITA<br />
-              <span className="text-gradient">YADAV</span>
-            </h1>
-            <div className="text-xl md:text-2xl font-medium text-foreground/80 mb-6 h-16">
-              <TypeAnimation
-                sequence={[
-                  "AI & ML Enthusiast",
-                  2000,
-                  "Computer Vision Developer",
-                  2000,
-                  "Full Stack Developer",
-                  2000,
-                ]}
-                wrapper="span"
-                speed={45}
-                repeat={Infinity}
-                className="text-gradient"
-              />
-            </div>
-            <p className="text-muted-foreground max-w-xl mb-8 leading-relaxed">
-              Building intelligent real-world solutions with Artificial Intelligence,
-              Machine Learning, Computer Vision and modern web technologies.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#projects" className="btn-neon">
-                View Projects <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#contact" className="btn-ghost-neon">
-                Contact Me <Send className="w-4 h-4" />
-              </a>
-              <a
-                href="https://github.com/aprajitayadav2901-eng"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost-neon"
+          <div className="relative">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+              className="display text-[18vw] md:text-[14vw] text-foreground/95"
+            >
+              APRAJITA
+            </motion.h1>
+
+            <div className="relative grid md:grid-cols-12 items-start gap-6 mt-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.2 }}
+                className="md:col-span-5 md:col-start-2 order-2 md:order-1 -mt-[6vw] md:-mt-[8vw] z-10"
               >
-                <Github className="w-4 h-4" /> GitHub
+                <div className="relative overflow-hidden">
+                  <img
+                    src={portrait}
+                    alt="Aprajita Yadav, AI Engineer"
+                    className="w-full h-auto grayscale contrast-110"
+                    style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="md:col-span-4 md:col-start-9 order-1 md:order-2 pt-4 md:pt-12"
+              >
+                <div className="eyebrow mb-3">Aprajita Yadav</div>
+                <p className="font-serif text-lg md:text-xl text-foreground/80 leading-relaxed">
+                  Crafting intelligence in every line — building real-world AI, Computer Vision and
+                  Full Stack systems with precision and quiet rigor.
+                </p>
+              </motion.div>
+            </div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="display text-[18vw] md:text-[14vw] text-foreground/95 text-right -mt-[4vw]"
+            >
+              YADAV
+            </motion.h1>
+          </div>
+
+          <div className="mt-16 flex flex-wrap items-center justify-between gap-6">
+            <div className="flex flex-wrap gap-3">
+              <a href="#projects" className="btn-mono">
+                Explore Work <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <a href="#contact" className="btn-ghost-mono">
+                Contact <Send className="w-3.5 h-3.5" />
               </a>
             </div>
-          </motion.div>
+            <p className="eyebrow max-w-xs">
+              Engineering intelligent systems — Computer Vision, ML, and Full Stack — from Delhi, India.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="About" title="Who I Am" />
-          <Reveal>
-            <div className="glass-card rounded-3xl p-8 md:p-12 text-lg leading-relaxed text-foreground/85">
-              <Sparkles className="w-8 h-8 text-[var(--neon-blue)] mb-4" />
-              <p>
-                Final-year Computer Science Engineering student at{" "}
-                <span className="text-gradient font-semibold">VIT Bhopal University</span>{" "}
-                passionate about Artificial Intelligence, Machine Learning, Computer Vision and
-                Full Stack Development. I build intelligent systems, real-time detection
-                applications and modern web solutions — driven by strong problem-solving
-                instincts and a craft for clean engineering.
-              </p>
+      <section id="about" className="relative py-32 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto hairline pt-16">
+          <div className="grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-4">
+              <div className="eyebrow mb-4">About</div>
+              <h2 className="display text-5xl md:text-7xl">
+                About<br />Aprajita
+              </h2>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* EDUCATION */}
-      <section id="education" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="Education" title="Academic Journey" />
-          <div className="relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--neon-blue)] via-[var(--neon-purple)] to-transparent" />
-            {[
-              {
-                period: "2023 — 2027",
-                title: "B.Tech, Computer Science Engineering",
-                place: "VIT Bhopal University",
-              },
-              {
-                period: "Senior Secondary",
-                title: "12th Grade",
-                place: "Kendriya Vidyalaya Gole Market",
-              },
-            ].map((edu, i) => (
-              <Reveal key={edu.title} delay={i * 0.1}>
-                <div className={`relative flex flex-col md:flex-row gap-6 mb-10 ${i % 2 ? "md:flex-row-reverse" : ""}`}>
-                  <div className="md:w-1/2" />
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[var(--neon-blue)] glow-blue mt-6" />
-                  <div className="md:w-1/2 pl-12 md:pl-0 md:px-8">
-                    <div className="glass-card rounded-2xl p-6">
-                      <div className="flex items-center gap-2 text-xs font-mono text-[var(--neon-blue)] mb-2">
-                        <GraduationCap className="w-4 h-4" />
-                        {edu.period}
-                      </div>
-                      <h3 className="text-xl font-bold mb-1">{edu.title}</h3>
-                      <p className="text-muted-foreground">{edu.place}</p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+            <div className="md:col-span-5 md:col-start-7">
+              <p className="font-serif text-xl md:text-2xl leading-relaxed text-foreground/85 mb-8">
+                Since 2023, Aprajita has immersed herself in the craft of intelligent systems —
+                forging a deep connection between code and reasoning. Each project tells a story,
+                revealing the precision and curiosity carved into it over time.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+                Final-year Computer Science Engineering student at VIT Bhopal University, focused on
+                Artificial Intelligence, Machine Learning, Computer Vision and Full Stack
+                Development. Driven by problem-solving instinct and a craft for clean engineering.
+              </p>
+              <a href="#projects" className="btn-ghost-mono">
+                Learn More <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* EXPERIENCE */}
-      <section id="experience" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle kicker="Experience" title="Where I've Worked" />
-          <div className="grid md:grid-cols-2 gap-6">
-            {experiences.map((exp, i) => (
-              <Reveal key={exp.role} delay={i * 0.1}>
-                <div className="glass-card rounded-2xl p-8 h-full group">
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-[var(--neon-blue)]/20 to-[var(--neon-purple)]/20 border border-[var(--neon-blue)]/30 group-hover:glow-blue transition-all">
-                      <exp.icon className="w-6 h-6 text-[var(--neon-blue)]" />
-                    </div>
-                    <Briefcase className="w-5 h-5 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
-                  <p className="text-[var(--neon-purple)] font-mono text-sm mb-4">{exp.org}</p>
-                  <ul className="space-y-2 text-muted-foreground">
-                    {exp.points.map((p) => (
-                      <li key={p} className="flex gap-2">
-                        <span className="text-[var(--neon-blue)] mt-1">▹</span>
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
+      {/* GALLERY / PROJECTS */}
+      <section id="projects" className="relative py-32 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="eyebrow mb-4">Gallery</div>
+            <h2 className="display text-6xl md:text-8xl">Selected Work</h2>
           </div>
-        </div>
-      </section>
-
-      {/* SKILLS */}
-      <section id="skills" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle kicker="Skills" title="Tech Arsenal" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {Object.entries(skills).map(([cat, items], i) => (
-              <Reveal key={cat} delay={i * 0.08}>
-                <div className="glass-card rounded-2xl p-6 h-full">
-                  <h3 className="text-sm font-mono uppercase tracking-wider text-[var(--neon-blue)] mb-4">
-                    {cat}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((s) => (
-                      <span
-                        key={s}
-                        className="px-3 py-1.5 rounded-lg text-sm bg-[oklch(0.72_0.22_250/0.08)] border border-[var(--neon-blue)]/20 hover:border-[var(--neon-blue)]/60 hover:bg-[oklch(0.72_0.22_250/0.15)] transition-all cursor-default"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section id="projects" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle kicker="Projects" title="Featured Work" />
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-px bg-border/40">
             {projects.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.1}>
-                <div className="glass-card rounded-3xl p-8 h-full group relative overflow-hidden">
-                  <div className={`absolute -top-20 -right-20 w-60 h-60 rounded-full bg-gradient-to-br ${p.accent} opacity-10 blur-3xl group-hover:opacity-30 transition-opacity`} />
-                  <div className="relative">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${p.accent} mb-5 group-hover:scale-110 transition-transform`}>
-                      <p.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3">{p.title}</h3>
-                    <p className="text-muted-foreground mb-5 leading-relaxed">{p.desc}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {p.tags.map((t) => (
-                        <span key={t} className="px-2.5 py-1 text-xs rounded-md font-mono bg-[oklch(0.65_0.27_305/0.1)] text-[var(--neon-purple)] border border-[var(--neon-purple)]/30">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-3">
-                      <a
-                        href="https://github.com/aprajitayadav2901-eng"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-ghost-neon text-sm"
-                      >
-                        <Github className="w-4 h-4" /> Code
-                      </a>
-                      <button className="btn-ghost-neon text-sm opacity-60 cursor-not-allowed">
-                        <ExternalLink className="w-4 h-4" /> Live Demo
-                      </button>
-                    </div>
+              <Reveal key={p.title} delay={i * 0.08}>
+                <a
+                  href="https://github.com/aprajitayadav2901-eng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-10 md:p-14 card-mono group h-full"
+                >
+                  <div className="flex items-start justify-between mb-12">
+                    <span className="eyebrow">{p.tag}</span>
+                    <span className="eyebrow">{p.year}</span>
+                  </div>
+                  <h3 className="display text-4xl md:text-5xl mb-6 group-hover:translate-x-1 transition-transform">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-md mb-8">
+                    {p.desc}
+                  </p>
+                  <div className="flex items-center gap-2 eyebrow text-foreground">
+                    View Case <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ACHIEVEMENT */}
+      <section id="achievement" className="relative py-32 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="eyebrow mb-4">Achievement</div>
+          <h2 className="display text-6xl md:text-8xl mb-20">Achievement</h2>
+          <div className="space-y-px bg-border/40">
+            {achievements.map((a, i) => (
+              <Reveal key={a.title} delay={i * 0.06}>
+                <div className="grid grid-cols-12 gap-4 py-8 px-2 bg-background hover:bg-secondary/20 transition-colors group">
+                  <div className="col-span-3 md:col-span-2">
+                    <div className="eyebrow text-muted-foreground">{a.kind}</div>
+                    <div className="font-serif text-2xl md:text-3xl mt-1">{a.year}</div>
+                  </div>
+                  <div className="col-span-9 md:col-span-7">
+                    <h3 className="font-serif text-2xl md:text-3xl group-hover:translate-x-1 transition-transform">
+                      {a.title}
+                    </h3>
+                  </div>
+                  <div className="hidden md:flex md:col-span-3 items-center justify-end">
+                    <span className="eyebrow text-muted-foreground">{a.place}</span>
                   </div>
                 </div>
               </Reveal>
@@ -326,19 +215,50 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle kicker="Services" title="What I Offer" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* QUOTE */}
+      <section className="relative py-32 px-6 md:px-10 overflow-hidden">
+        <div className="absolute inset-0 -z-10 smoke-bg" aria-hidden />
+        <div className="max-w-7xl mx-auto relative">
+          <div className="grid md:grid-cols-12 items-center">
+            <div className="md:col-span-5">
+              <h2 className="display text-5xl md:text-7xl">
+                THROUGH<br />
+                <span className="text-foreground/40">CODE AND</span><br />
+                CURIOSITY
+              </h2>
+            </div>
+            <div className="md:col-span-2 flex justify-center my-10 md:my-0">
+              <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden grayscale border border-border">
+                <img src={portrait} alt="" className="w-full h-full object-cover" style={{ filter: "grayscale(100%) brightness(0.7) contrast(1.1)" }} />
+              </div>
+            </div>
+            <div className="md:col-span-5 md:text-right">
+              <h2 className="display text-5xl md:text-7xl">
+                WE BUILD<br />
+                <span className="text-foreground/40">THE SOUL OF</span><br />
+                THE MACHINE
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES / WHAT I DO */}
+      <section id="services" className="relative py-32 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="eyebrow mb-4">What I Do</div>
+          <h2 className="display text-6xl md:text-8xl mb-20">Practice</h2>
+          <div className="grid md:grid-cols-2 gap-px bg-border/40">
             {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.08}>
-                <div className="glass-card rounded-2xl p-6 h-full text-center group">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-[var(--neon-blue)]/20 to-[var(--neon-purple)]/20 border border-[var(--neon-blue)]/30 mb-4 group-hover:animate-pulse-glow">
-                    <s.icon className="w-7 h-7 text-[var(--neon-blue)]" />
+              <Reveal key={s.title} delay={i * 0.06}>
+                <div className="bg-background p-10 md:p-12 h-full">
+                  <div className="flex items-start gap-6">
+                    <span className="font-mono text-xs text-muted-foreground pt-2">{s.num}</span>
+                    <div>
+                      <h3 className="display text-3xl md:text-4xl mb-3">{s.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed max-w-md">{s.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground">{s.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -347,51 +267,47 @@ function Portfolio() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="Contact" title="Let's Build Together" />
-          <div className="grid lg:grid-cols-5 gap-6">
-            <Reveal className="lg:col-span-2">
-              <div className="glass-card rounded-3xl p-8 h-full space-y-5">
-                <h3 className="text-xl font-bold mb-2">Get in Touch</h3>
-                <p className="text-muted-foreground text-sm mb-6">
-                  Open to internships, hackathons, and AI/ML opportunities.
-                </p>
-                {[
-                  { icon: Mail, label: "aprajitayadav2901@gmail.com", href: "mailto:aprajitayadav2901@gmail.com" },
-                  { icon: Linkedin, label: "linkedin.com/in/aprajitay", href: "https://www.linkedin.com/in/aprajitay" },
-                  { icon: Github, label: "github.com/aprajitayadav2901-eng", href: "https://github.com/aprajitayadav2901-eng" },
-                  { icon: MapPin, label: "Delhi, India", href: "#" },
-                ].map((c) => (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[oklch(0.72_0.22_250/0.1)] transition-all group"
-                  >
-                    <div className="p-2 rounded-lg bg-[oklch(0.72_0.22_250/0.15)] border border-[var(--neon-blue)]/30 group-hover:glow-blue">
-                      <c.icon className="w-4 h-4 text-[var(--neon-blue)]" />
-                    </div>
-                    <span className="text-sm break-all">{c.label}</span>
-                  </a>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal className="lg:col-span-3" delay={0.1}>
+      <section id="contact" className="relative py-32 px-6 md:px-10 grain overflow-hidden">
+        <div className="absolute inset-0 -z-10 smoke-bg" aria-hidden />
+        <div className="max-w-7xl mx-auto">
+          <div className="eyebrow mb-4">Get in Touch</div>
+          <h2 className="display text-6xl md:text-8xl mb-16">Feel the Craft</h2>
+          <div className="grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-5">
               <ContactForm />
-            </Reveal>
+            </div>
+            <div className="md:col-span-6 md:col-start-7 space-y-6">
+              {[
+                { icon: Mail, label: "aprajitayadav2901@gmail.com", href: "mailto:aprajitayadav2901@gmail.com" },
+                { icon: Linkedin, label: "linkedin.com/in/aprajitay", href: "https://www.linkedin.com/in/aprajitay" },
+                { icon: Github, label: "github.com/aprajitayadav2901-eng", href: "https://github.com/aprajitayadav2901-eng" },
+                { icon: MapPin, label: "Delhi, India", href: "#" },
+              ].map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  target={c.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between py-5 hairline group"
+                >
+                  <div className="flex items-center gap-4">
+                    <c.icon className="w-4 h-4 text-muted-foreground" />
+                    <span className="font-serif text-xl md:text-2xl">{c.label}</span>
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 px-6 border-t border-border/50 mt-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            Designed & Developed by <span className="text-gradient font-semibold">APRAJITA YADAV</span>
-          </p>
-          <div className="flex gap-3">
+      <footer className="py-12 px-6 md:px-10 hairline">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="eyebrow">© 2026 — Aprajita Yadav</div>
+          <div className="display text-2xl md:text-3xl">Aprajita Yadav</div>
+          <div className="flex gap-5">
             {[
               { icon: Github, href: "https://github.com/aprajitayadav2901-eng" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/aprajitay" },
@@ -402,7 +318,7 @@ function Portfolio() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg glass hover:glow-blue hover:border-[var(--neon-blue)] transition-all"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <s.icon className="w-4 h-4" />
               </a>
@@ -419,7 +335,7 @@ function ContactForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const inputCls =
-    "w-full px-4 py-3 rounded-xl bg-[oklch(0.18_0.03_270/0.6)] border border-border focus:border-[var(--neon-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-blue)]/30 transition-all";
+    "w-full px-0 py-4 bg-transparent border-0 border-b border-border focus:border-foreground focus:outline-none transition-colors font-serif text-lg placeholder:text-muted-foreground/60";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -457,44 +373,42 @@ function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="glass-card rounded-3xl p-10 h-full flex flex-col items-center justify-center text-center min-h-[400px]">
-        <div className="p-4 rounded-full bg-[var(--neon-blue)]/15 border border-[var(--neon-blue)]/40 glow-blue mb-5">
-          <CheckCircle2 className="w-10 h-10 text-[var(--neon-blue)]" />
-        </div>
-        <h3 className="text-2xl font-bold mb-2">Message sent!</h3>
-        <p className="text-muted-foreground mb-6 max-w-sm">
-          Thanks for reaching out. I'll get back to you at your email shortly.
+      <div className="py-16 flex flex-col items-start">
+        <CheckCircle2 className="w-8 h-8 mb-5" />
+        <h3 className="display text-4xl mb-3">Message sent.</h3>
+        <p className="text-sm text-muted-foreground mb-8 max-w-sm">
+          Thank you for reaching out — a reply will arrive at your inbox shortly.
         </p>
-        <button onClick={() => setStatus("idle")} className="btn-ghost-neon">
-          Send another <ArrowRight className="w-4 h-4" />
+        <button onClick={() => setStatus("idle")} className="btn-ghost-mono">
+          Send Another <ArrowUpRight className="w-3.5 h-3.5" />
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 space-y-4">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <input required name="name" placeholder="Your Name" className={inputCls} />
-        <input required type="email" name="email" placeholder="Email" className={inputCls} />
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-2">
+      <input required name="name" placeholder="Name" className={inputCls} />
+      <input required type="email" name="email" placeholder="Email" className={inputCls} />
       <input name="subject" placeholder="Subject" className={inputCls} />
-      <textarea required name="message" rows={6} placeholder="Tell me about your project..." className={`${inputCls} resize-none`} />
+      <textarea required name="message" rows={4} placeholder="Tell me about your project…" className={`${inputCls} resize-none`} />
 
       {status === "error" && (
-        <div className="flex items-start gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
-          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
-          <span>{errorMsg || "Failed to send. Please try again or email me directly."}</span>
+        <div className="flex items-start gap-2 text-xs text-destructive pt-3">
+          <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+          <span>{errorMsg || "Failed to send. Please email me directly."}</span>
         </div>
       )}
 
-      <button type="submit" disabled={status === "loading"} className="btn-neon w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed">
-        {status === "loading" ? (
-          <>Sending… <Loader2 className="w-4 h-4 animate-spin" /></>
-        ) : (
-          <>Send Message <Send className="w-4 h-4" /></>
-        )}
-      </button>
+      <div className="pt-6">
+        <button type="submit" disabled={status === "loading"} className="btn-mono disabled:opacity-60">
+          {status === "loading" ? (
+            <>Sending <Loader2 className="w-3.5 h-3.5 animate-spin" /></>
+          ) : (
+            <>Get in Touch <ArrowUpRight className="w-3.5 h-3.5" /></>
+          )}
+        </button>
+      </div>
     </form>
   );
 }
