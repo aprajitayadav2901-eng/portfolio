@@ -36,10 +36,10 @@ const achievements = [
 ];
 
 const services = [
-  { num: "01", title: "Computer Vision", desc: "Real-time detection and intelligent automation with YOLO, OpenCV and Python." },
-  { num: "02", title: "Web Applications", desc: "Modern, responsive interfaces with clean UI and measured performance." },
-  { num: "03", title: "Machine Learning", desc: "Predictive systems and analytical pipelines from raw data to deployable model." },
-  { num: "04", title: "Software Engineering", desc: "Scalable, maintainable code grounded in problem-solving and real-world impact." },
+  { num: "01", icon: "🚀", title: "Computer Vision Development", desc: "Creating AI-powered applications using YOLO, OpenCV, and Python for real-time object detection and intelligent automation." },
+  { num: "02", icon: "💻", title: "Web Application Development", desc: "Building modern, responsive, and interactive web applications with clean UI and optimized performance." },
+  { num: "03", icon: "🧠", title: "Machine Learning Solutions", desc: "Applying machine learning techniques to analyze data, generate insights, and develop predictive systems." },
+  { num: "04", icon: "⚡", title: "Software Engineering", desc: "Developing efficient and scalable solutions with a focus on clean code, problem-solving, and real-world impact." },
 ];
 
 function Portfolio() {
@@ -255,6 +255,7 @@ function Portfolio() {
                   <div className="flex items-start gap-6">
                     <span className="font-mono text-xs text-muted-foreground pt-2">{s.num}</span>
                     <div>
+                      <div className="text-3xl mb-4">{s.icon}</div>
                       <h3 className="display text-3xl md:text-4xl mb-3">{s.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed max-w-md">{s.desc}</p>
                     </div>
